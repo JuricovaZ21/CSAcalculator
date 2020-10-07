@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 public class Calculator {
     public static void main(String[] args){
 
-        Object[] options = {"Calculator", "Pascal triangle", "Give me a cookie"};
+        Object[] options = {"Calculator", "Pascal triangle", "Give me a cookie", "Study Hours", "Sleep calculator"};
         String input;
         int n = JOptionPane.showOptionDialog(null, "What would you like to calculate?", 
         "JarWise", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[2]);
@@ -24,7 +24,15 @@ public class Calculator {
                 int x = scany.nextInt();
                 pascal(x);
                 break;
-            case 2: break;
+            case 2: 
+                JOptionPane.showMessageDialog(null, "A Cookie", "CookieGiver.exe", JOptionPane.INFORMATION_MESSAGE);
+                break;
+            case 3: 
+                JOptionPane.showMessageDialog(null, "Option 4", "Virus.exe", JOptionPane.INFORMATION_MESSAGE);
+                break;
+            case 4:
+                JOptionPane.showMessageDialog(null, "Option 5", "Virus.exe", JOptionPane.INFORMATION_MESSAGE);
+                break;
             default: break;
         }
     }
