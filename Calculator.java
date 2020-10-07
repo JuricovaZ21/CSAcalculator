@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.function.IntBinaryOperator;
-
 import javax.swing.JOptionPane;
 
 public class Calculator {
@@ -18,10 +17,7 @@ public class Calculator {
                 calculate(input);
                 break;
             case 1:
-                //input = JOptionPane.showInputDialog(null, "Number of layers ", "Pascal.exe", JOptionPane.QUESTION_MESSAGE);
-                //int x = input;
-                Scanner scany = new Scanner(System.in);
-                int x = scany.nextInt();
+                int x = Integer.parseInt(JOptionPane.showInputDialog(null, "Number of layers ", "Pascal.exe", JOptionPane.QUESTION_MESSAGE));
                 pascal(x);
                 break;
             case 2: 
@@ -63,16 +59,18 @@ public class Calculator {
 
     public static void pascal(int x){
         ArrayList<Integer> list = new ArrayList<>();
+        String out = "";
         list.add(1);
         System.out.println(list);
-        for(int i=1; i<x; i++){
+        for(int i=1; i<=x; i++){
             int prev = 1;
             for(int j=1; j<list.size(); j++){
                 list.set(j, (prev + list.get(j)));
                 prev = list.get(j) - prev;
             }
             list.add(1);
-            System.out.println(list);
+            out += list + "\n";
         }
+        JOptionPane.showMessageDialog(null, out, "Pascal.exe", JOptionPane.INFORMATION_MESSAGE);
     }
 }
