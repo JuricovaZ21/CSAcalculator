@@ -1,12 +1,19 @@
 import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.function.IntBinaryOperator;
 import javax.swing.JOptionPane;
-
+import javax.swing.JTextField;
 public class Calculator {
     public static void main(String[] args){
 
-        Object[] options = {"Calculator", "Pascal triangle", "Give me a cookie", "Study Hours", "Sleep calculator"};
+        JTextField field1 = new JTextField();
+        JTextField field2 = new JTextField();
+        JTextField field3 = new JTextField();
+        Object[] Fields = {
+            "a: ", field1,
+            "b: ", field2,
+            "c: ", field3
+        };
+
+        Object[] options = {"Calculator", "Pascal triangle", "Give me a cookie", "Quardatic equation", "Option 5"};
         String input;
         int n = JOptionPane.showOptionDialog(null, "What would you like to calculate?", 
         "JarWise", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[2]);
@@ -24,13 +31,15 @@ public class Calculator {
                 JOptionPane.showMessageDialog(null, "A Cookie", "CookieGiver.exe", JOptionPane.INFORMATION_MESSAGE);
                 break;
             case 3: 
-                JOptionPane.showMessageDialog(null, "Option 4", "Virus.exe", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showConfirmDialog(null, Fields, "QuadraticEquationCalculator.exe", JOptionPane.DEFAULT_OPTION);
+                quadratic(Integer.parseInt(field1.getText()), Integer.parseInt(field2.getText()), Integer.parseInt(field3.getText()));
                 break;
             case 4:
                 JOptionPane.showMessageDialog(null, "Option 5", "Virus.exe", JOptionPane.INFORMATION_MESSAGE);
                 break;
             default: break;
         }
+        
     }
 
     public static void calculate(String text){
@@ -72,5 +81,12 @@ public class Calculator {
             out += list + "\n";
         }
         JOptionPane.showMessageDialog(null, out, "Pascal.exe", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public static void quadratic(double a, double b, double c){
+        double result1 = ((-b) + Math.sqrt(b*b - 4*a*c)) / (2*a);
+        double result2 = ((-b) - Math.sqrt(b*b - 4*a*c)) / (2*a);
+        String response = " For "+a+"x^2 + "+b+"x + "+c+" = 0\n Is x equal to ";
+        JOptionPane.showMessageDialog(null, response + result1+" or "+result2, "QuadraticEquationCalculatorBecauseWhyNot?ItsUsefulIsntIt?.exe", JOptionPane.PLAIN_MESSAGE);
     }
 }
