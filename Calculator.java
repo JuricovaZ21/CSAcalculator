@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import java.text.*;
 public class Calculator {
     public static void main(String[] args){
 
@@ -13,11 +14,10 @@ public class Calculator {
             "c: ", field3
         };
 
-        Object[] options = {"Calculator", "Pascal triangle", "Give me a cookie", "Quardatic equation", "Prime number factorization"}; // add another options here
+        Object[] options = {"Calculator", "Pascal triangle", "Temperature converter", "Quardatic equation", "Prime number factorization"}; // add another options here
         String input;
         int n = JOptionPane.showOptionDialog(null, "What would you like to calculate?", 
         "JarWise", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
-        //System.out.println("Option number "+n);
         switch (n) {
             case 0: 
                 input = JOptionPane.showInputDialog(null, "Equation: ", "Calculator.exe", JOptionPane.QUESTION_MESSAGE);
@@ -28,7 +28,8 @@ public class Calculator {
                 pascal(x);
                 break;
             case 2: 
-                JOptionPane.showMessageDialog(null, "A Cookie", "CookieGiver.exe", JOptionPane.INFORMATION_MESSAGE);
+                //JOptionPane.showMessageDialog(null, "A Cookie", "CookieGiver.exe", JOptionPane.INFORMATION_MESSAGE);
+                temperature();
                 break;
             case 3: 
                 JOptionPane.showConfirmDialog(null, Fields, "QuadraticEquationCalculator.exe", JOptionPane.DEFAULT_OPTION);
@@ -81,6 +82,30 @@ public class Calculator {
             out += list + "\n";
         }
         JOptionPane.showMessageDialog(null, out, "Pascal.exe", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public static void temperature() {
+        double fahrenheit;
+        double celsius;
+        String tempInput;
+        String conversionOptions;
+        String output;
+        output = " ";
+        conversionOptions = JOptionPane.showInputDialog(null, "Type in 'Option A' for Celsius to Fahrenheit. Type in 'Option B' for Fahrenheit to Celsius.");
+        if (conversionOptions.equals("Option A")) {
+            tempInput = JOptionPane.showInputDialog(null, "Please enter a temperature in Celsius", "CelsiusToFahrenheit.exe", JOptionPane.PLAIN_MESSAGE);
+            celsius = Double.parseDouble(tempInput);
+            fahrenheit = celsius * 9 / 5 + 32;
+            output = celsius + " degrees Celsius is " + Math.round(fahrenheit) + "degrees Fahrenheit.";
+        } else if (conversionOptions.equals("Option B")) {
+            tempInput = JOptionPane.showInputDialog(null, "Please enter a temperature in Fahrenheit", "FahrenheitToCelsius.exe", JOptionPane.PLAIN_MESSAGE);
+            fahrenheit = Double.parseDouble(tempInput);
+            celsius = (fahrenheit - 32) * 5 / 9;
+            output = fahrenheit + " degrees Fahrenheit is " + Math.round(celsius) + " degrees Celsius.";
+        } else {
+            output = "Sorry, this is not a valid option :( ";
+        }
+        JOptionPane.showMessageDialog(null, output);
     }
 
     public static void quadratic(double a, double b, double c){
