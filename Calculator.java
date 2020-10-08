@@ -16,8 +16,8 @@ public class Calculator {
         Object[] options = {"Calculator", "Pascal triangle", "Give me a cookie", "Quardatic equation", "Prime number factorization"}; // add another options here
         String input;
         int n = JOptionPane.showOptionDialog(null, "What would you like to calculate?", 
-        "JarWise", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[2]);
-        System.out.println("Option number "+n);
+        "JarWise", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
+        //System.out.println("Option number "+n);
         switch (n) {
             case 0: 
                 input = JOptionPane.showInputDialog(null, "Equation: ", "Calculator.exe", JOptionPane.QUESTION_MESSAGE);
@@ -66,12 +66,12 @@ public class Calculator {
         JOptionPane.showMessageDialog(null, y+""+b+""+x+" = "+v, "Calculator.exe", JOptionPane.INFORMATION_MESSAGE);
     }
 
-    public static void pascal(int x){
+    public static void pascal(int layers){
         ArrayList<Integer> list = new ArrayList<>();
         String out = "";
         list.add(1);
         System.out.println(list);
-        for(int i=1; i<=x; i++){
+        for(int i=1; i<=layers; i++){
             int prev = 1;
             for(int j=1; j<list.size(); j++){
                 list.set(j, (prev + list.get(j)));
