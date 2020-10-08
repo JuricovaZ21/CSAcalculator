@@ -1,14 +1,13 @@
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import java.text.*;
 public class Calculator {
     public static void main(String[] args){
 
         JTextField field1 = new JTextField();
         JTextField field2 = new JTextField();
         JTextField field3 = new JTextField();
-        Object[] Fields = {
+        Object[] Fields = { // object to be used for a GUI with three fields
             "a: ", field1,
             "b: ", field2,
             "c: ", field3
@@ -18,7 +17,9 @@ public class Calculator {
         String input;
         int n = JOptionPane.showOptionDialog(null, "What would you like to calculate?", 
         "JarWise", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
-        switch (n) {
+
+            // switch for each option of button
+        switch (n) { 
             case 0: 
                 input = JOptionPane.showInputDialog(null, "Equation: ", "Calculator.exe", JOptionPane.QUESTION_MESSAGE);
                 calculate(input);
@@ -43,7 +44,7 @@ public class Calculator {
         }
     }
 
-    public static void calculate(String text){
+    public static void calculate(String text){  // regular calculator for two integer numbers
         long x = 0, y = 0, v=1;
         char b = '+';
         for(int i=0; i<text.length(); i++){
@@ -67,7 +68,7 @@ public class Calculator {
         JOptionPane.showMessageDialog(null, y+""+b+""+x+" = "+v, "Calculator.exe", JOptionPane.INFORMATION_MESSAGE);
     }
 
-    public static void pascal(int layers){
+    public static void pascal(int layers){  // pascal's trinagle with an option for a number of layers
         ArrayList<Integer> list = new ArrayList<>();
         String out = "";
         list.add(1);
@@ -84,20 +85,16 @@ public class Calculator {
         JOptionPane.showMessageDialog(null, out, "Pascal.exe", JOptionPane.INFORMATION_MESSAGE);
     }
 
-    public static void temperature() {
-        double fahrenheit;
-        double celsius;
-        String tempInput;
-        String conversionOptions;
-        String output;
-        output = " ";
-        conversionOptions = JOptionPane.showInputDialog(null, "Type in 'Option A' for Celsius to Fahrenheit. Type in 'Option B' for Fahrenheit to Celsius.");
-        if (conversionOptions.equals("Option A")) {
+    public static void temperature() {  // convertion between Celcius and Farengheit
+        double fahrenheit, celsius;
+        String tempInput, conversionOptions, output = " ";
+        conversionOptions = JOptionPane.showInputDialog(null, "Type in 'C' for Celsius to Fahrenheit. Type in 'F' for Fahrenheit to Celsius.");
+        if (conversionOptions.equals("C")) {
             tempInput = JOptionPane.showInputDialog(null, "Please enter a temperature in Celsius", "CelsiusToFahrenheit.exe", JOptionPane.PLAIN_MESSAGE);
             celsius = Double.parseDouble(tempInput);
             fahrenheit = celsius * 9 / 5 + 32;
-            output = celsius + " degrees Celsius is " + Math.round(fahrenheit) + "degrees Fahrenheit.";
-        } else if (conversionOptions.equals("Option B")) {
+            output = celsius + " degrees Celsius is " + Math.round(fahrenheit) + " degrees Fahrenheit.";
+        } else if (conversionOptions.equals("F")) {
             tempInput = JOptionPane.showInputDialog(null, "Please enter a temperature in Fahrenheit", "FahrenheitToCelsius.exe", JOptionPane.PLAIN_MESSAGE);
             fahrenheit = Double.parseDouble(tempInput);
             celsius = (fahrenheit - 32) * 5 / 9;
@@ -108,14 +105,14 @@ public class Calculator {
         JOptionPane.showMessageDialog(null, output);
     }
 
-    public static void quadratic(double a, double b, double c){
+    public static void quadratic(double a, double b, double c){  // quadratic function calculator in a form of ax^2+bx+c=0
         double result1 = ((-b) + Math.sqrt(b*b - 4*a*c)) / (2*a);
         double result2 = ((-b) - Math.sqrt(b*b - 4*a*c)) / (2*a);
         String response = " For "+a+"x^2 + "+b+"x + "+c+" = 0\n Is x equal to ";
         JOptionPane.showMessageDialog(null, response + result1+" or "+result2, "QuadraticEquationCalculatorBecauseWhyNot?ItsUsefulIsntIt?.exe", JOptionPane.PLAIN_MESSAGE);
     }
 
-    public static void factor(int x){
+    public static void factor(int x){   // Prime number factorization of an integer
         double d = x;
         int storeNumber = x;
         d = java.lang.Math.sqrt(d);
