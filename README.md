@@ -21,3 +21,4 @@ Link to the source code on Github:
   
 Description of the project:
   
+This calculator provides a variety of miscellaneous functions such as Pascal's triangle, temperature converter or a quadratic equation solver. It is rather unique because of this mix of functions that are not necessarily on every calculator.
