@@ -13,7 +13,7 @@ public class Calculator {
             "c: ", field3
         };
 
-        Object[] options = {"Calculator", "Pascal triangle", "Give me a cookie", "Quardatic equation", "Option 5"};
+        Object[] options = {"Calculator", "Pascal triangle", "Give me a cookie", "Quardatic equation", "Prime number factorization"}; // add another options here
         String input;
         int n = JOptionPane.showOptionDialog(null, "What would you like to calculate?", 
         "JarWise", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[2]);
@@ -35,11 +35,11 @@ public class Calculator {
                 quadratic(Integer.parseInt(field1.getText()), Integer.parseInt(field2.getText()), Integer.parseInt(field3.getText()));
                 break;
             case 4:
-                JOptionPane.showMessageDialog(null, "Option 5", "Virus.exe", JOptionPane.INFORMATION_MESSAGE);
+                int y = Integer.parseInt(JOptionPane.showInputDialog(null, "Insert a number", "PrimeNumberFactorization.exe", JOptionPane.INFORMATION_MESSAGE));
+                factor(y);
                 break;
             default: break;
         }
-        
     }
 
     public static void calculate(String text){
@@ -88,5 +88,20 @@ public class Calculator {
         double result2 = ((-b) - Math.sqrt(b*b - 4*a*c)) / (2*a);
         String response = " For "+a+"x^2 + "+b+"x + "+c+" = 0\n Is x equal to ";
         JOptionPane.showMessageDialog(null, response + result1+" or "+result2, "QuadraticEquationCalculatorBecauseWhyNot?ItsUsefulIsntIt?.exe", JOptionPane.PLAIN_MESSAGE);
+    }
+
+    public static void factor(int x){
+        double d = x;
+        int storeNumber = x;
+        d = java.lang.Math.sqrt(d);
+        ArrayList<Integer> array = new ArrayList<Integer>(0);
+        for(int i = 2; i < d; i++){
+            if(x % i == 0){
+                array.add(i);
+                x /= i; i = 1;
+            }
+        }
+        if(x != 1){array.add(x);}
+        JOptionPane.showMessageDialog(null, "Prime number factorization of number "+ storeNumber +" is\n "+array, "PrimeNumberFactorization.exe", JOptionPane.DEFAULT_OPTION);
     }
 }
